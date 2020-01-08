@@ -26,49 +26,72 @@ This project consists of 4 distinct modules:
 
 ### Image Processor Node (RPi #1)
 ---
+```
 sudo apt-get update
 sudo apt-get install python3-pip git libsm6 libfontconfig1 libxrender1 libxext6
-
+```
+```
 python3.5 -m pip install --upgrade tensorflow
 python3.5 -m pip install Django django-rest-framework graphene_django https://github.com/OlafenwaMoses/ImageAI/releases/download/2.0.2/imageai-2.0.2-py3-none-any.whl opencv-python keras pillow matplotlib
+```
 
 #### Clone the repo
+```
 git clone https://github.com/matt1light/monday-group4.git
+```
 #### Enter the repo
+```
 cd monday-group4/ImageAIServer
+```
 
 #### Download the resnet file
+```
 wget "https://github.com/OlafenwaMoses/ImageAI/releases/download/1.0/resnet50_coco_best_v2.0.1.h5"
+```
 
 #### Modify imageai
+```
 nvim /home/<username>/.local/lib/python3.5/site-packages/imageai/Detection/__init.py
+```
 
 #### add the following line above K.get_session()
 K.clear_session()
 
 #### Start the server
+```
 python3.5 manage.py run server 0.0.0.0:3000
+```
 
 ### Parking Server Node
 ---
 On your parking server execute the following commands
 
+```
 sudo apt-get update
 sudo apt-get install python3-pip git
+```
 
 #### Clone the repo
+```
 git clone https://github.com/matt1light/monday-group4.git
+```
 
 #### Enter the repo
+```
 cd monday-group4/parkingServer
+```
 
 #### Edit settings
+```
 gedit parkingServer/settings.py
+```
 
 #### Modify the IMAGE_PROCESSING_SERVER_IP to be the IP and port of the image processing server
 
 #### Run the server on port 8000
+```
 python3.5 runserver 0.0.0.0:8000
+```
 
 ### LED Display Node (Arduino)
 ---
@@ -83,16 +106,24 @@ Ensure to properly attach all components to the correct pins or the module will 
 ### CameraHub Node (RPi #2)
 ---
 #### A picam attatched to a raspberry pi is required for this module
+```
 sudo apt-get update
 sudo apt-get install python3-pip git
+```
 
 #### Clone the repo
+```
 git clone https://github.com/matt1light/monday-group4.git
+```
 
 #### Enter the repo
+```
 cd monday-group4/CameraHub
+```
 
 #### Modify the ip address in Camera to the address of the parking server
 
 #### Run the camerhub class
+```
 python3.5 CameraHub.py
+```
